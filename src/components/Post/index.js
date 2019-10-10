@@ -5,8 +5,9 @@ import { ExtLinkSvg } from '../../utils/svg';
 import postContext from '../../context/postContext';
 
 const Post = () => {
-  const { posts } = useContext(postContext);
-  console.log(posts);
+  const posts = useContext(postContext);
+  // console.log(typeof posts);
+
   return (
     <div className='flex flex-row flex-wrap -mx-2'>
       {posts.map(post => (
@@ -17,7 +18,7 @@ const Post = () => {
                 <img className='w-full' src={post.imgLink} alt=''></img>
               </div>
               <div className='w-11/12 pt-2 ml-4'>
-                <Date date={post.createdAt} />
+                <Date date={post.formatedCreatedAt} />
                 <div className='flex flex-row items-center mb-6'>
                   <ExtLinkSvg />
                   <a href='/' target='_blank'>
