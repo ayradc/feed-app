@@ -27,7 +27,11 @@ const Post = () => {
                     </h2>
                   </a>
                 </div>
-                <PostAction />
+                <PostAction
+                  id={post.id}
+                  upvote={post.upvote}
+                  downvote={post.downvote}
+                />
               </div>
             </div>
           </div>

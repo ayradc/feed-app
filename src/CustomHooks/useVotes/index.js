@@ -2,27 +2,12 @@ import { useEffect, useState } from 'react';
 import { db } from '../../utils/Firebase';
 
 const useVote = () => {
-  const [upVote, setUpVote] = useState(0);
-  const [downVote, setDownVote] = useState(0);
-  useEffect(() => {
-    db.collection('posts').onSnapshot(snap => {
-      let votes = snap.docs.map(doc => {
-        let { upvote, downvote } = doc.data();
-        return { upvote, downvote };
-      });
-      /// votes[0] is the index of a spesific document
-      let { upvote, downvote } = votes[0];
-      console.log(downvote);
-      setUpVote(upvote);
-      setDownVote(downvote);
-    });
-  }, [upVote, downVote]);
-
-  const HandleUpVote = () => {
+  const HandleUpVote = (e, id, upvote) => {
+    console.log(' this is the licked id ' + ' ' + id);
     db.collection('posts')
-      .doc('iaZejMA6bnn4vqMzVC5x')
+      .doc(id)
       .update({
-        upvote: upVote + 1,
+        upvote: upvote + 1,
         updatedAt: Date.now()
       })
       .then(function() {
@@ -33,11 +18,11 @@ const useVote = () => {
       });
   };
 
-  const handleDownVote = () => {
+  const HandleDownVote = (e, id, downvote) => {
     db.collection('posts')
-      .doc('iaZejMA6bnn4vqMzVC5x')
+      .doc(id)
       .update({
-        downvote: downVote + 1,
+        downvote: downvote + 1,
         updatedAt: Date.now()
       })
       .then(function() {
@@ -48,7 +33,7 @@ const useVote = () => {
       });
   };
 
-  return { HandleUpVote, handleDownVote, upVote, downVote };
+  return { HandleUpVote, HandleDownVote };
 };
 
 export default useVote;

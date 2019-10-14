@@ -19,7 +19,7 @@ const usePosts = () => {
           createdAt
         } = doc.data();
         let formatedCreatedAt = timeAgo(createdAt.toDate());
-        console.log(formatedCreatedAt);
+        //console.log(formatedCreatedAt);
         return {
           id,
           title,
