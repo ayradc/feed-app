@@ -3,7 +3,7 @@ import { DownVoteSvg } from '../../../../utils/svg';
 import postContext from '../../../../context/voteContext';
 
 const DownVote = props => {
-  const { HandleDownVote } = useContext(postContext);
+  const HandleDownVote = useContext(postContext);
   const { id, downvote } = props;
 
   return (

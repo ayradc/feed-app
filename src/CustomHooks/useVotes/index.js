@@ -1,39 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { db } from '../../utils/Firebase';
 
 const useVote = () => {
+
+  const resMsg = {
+    success: 'Document successfully updated!',
+    error: 'Error writing document: ',
+    vote: 'You can only vote once!'
+  };
+
   const HandleUpVote = (e, id, upvote) => {
-    console.log(' this is the licked id ' + ' ' + id);
-    db.collection('posts')
-      .doc(id)
-      .update({
-        upvote: upvote + 1,
-        updatedAt: Date.now()
-      })
-      .then(function() {
-        console.log('Document successfully updated!');
-      })
-      .catch(function(error) {
-        console.error('Error writing document: ', error);
-      });
+    const arrStorage = Object.entries(sessionStorage)
+    let i, currentId;
+    for (i = 0; i < arrStorage.length; i++) {
+      let storageId = arrStorage[i][0]
+      if (storageId === id) { currentId = storageId }
+    }
+    if (currentId !== id) {
+      db.collection('posts')
+        .doc(id)
+        .update({
+          upvote: upvote + 1,
+          updatedAt: Date.now()
+        })
+        .then(() => console.log(resMsg.success))
+        .catch(error => console.error(resMsg.error, error));
+      sessionStorage.setItem(id, true)
+    } else {
+
+    }
   };
 
   const HandleDownVote = (e, id, downvote) => {
-    db.collection('posts')
-      .doc(id)
-      .update({
-        downvote: downvote + 1,
-        updatedAt: Date.now()
-      })
-      .then(function() {
-        console.log('Document successfully updated!');
-      })
-      .catch(function(error) {
-        console.error('Error Updating document: ', error);
-      });
+    const arrStorage = Object.entries(sessionStorage)
+    let i, currentId;
+    for (i = 0; i < arrStorage.length; i++) {
+      let storageId = arrStorage[i][0]
+      if (storageId === id) { currentId = storageId }
+    }
+    if (currentId !== id) {
+      db.collection('posts')
+        .doc(id)
+        .update({
+          downvote: downvote + 1,
+          updatedAt: Date.now()
+        })
+        .then(() => console.log(resMsg.success))
+        .catch(error => console.error(resMsg.error, error));
+      sessionStorage.setItem(id, true)
+    } else console.log(resMsg.vote)
   };
 
   return { HandleUpVote, HandleDownVote };
 };
-
 export default useVote;

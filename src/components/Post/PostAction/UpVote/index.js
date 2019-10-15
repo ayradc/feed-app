@@ -3,9 +3,9 @@ import { UpVoteSvg } from '../../../../utils/svg';
 import postContext from '../../../../context/voteContext';
 
 const UpVote = props => {
-  const { HandleUpVote } = useContext(postContext);
+  const HandleUpVote = useContext(postContext);
   const { id, upvote } = props;
-  console.log(props);
+
   return (
     <button
       onClick={e => HandleUpVote(e, id, upvote)}
