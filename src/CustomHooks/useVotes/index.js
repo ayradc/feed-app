@@ -1,4 +1,4 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { db } from '../../utils/Firebase';
 
 const useVote = () => {
@@ -26,9 +26,7 @@ const useVote = () => {
         .then(() => console.log(resMsg.success))
         .catch(error => console.error(resMsg.error, error));
       sessionStorage.setItem(id, true)
-    } else {
-
-    }
+    } else console.log(resMsg.vote)
   };
 
   const HandleDownVote = (e, id, downvote) => {
@@ -36,7 +34,9 @@ const useVote = () => {
     let i, currentId;
     for (i = 0; i < arrStorage.length; i++) {
       let storageId = arrStorage[i][0]
-      if (storageId === id) { currentId = storageId }
+      if (storageId === id) {
+        currentId = storageId
+      }
     }
     if (currentId !== id) {
       db.collection('posts')
@@ -51,6 +51,10 @@ const useVote = () => {
     } else console.log(resMsg.vote)
   };
 
-  return { HandleUpVote, HandleDownVote };
+  let handleVote = {
+    HandleUpVote, HandleDownVote
+  }
+
+  return handleVote;
 };
 export default useVote;

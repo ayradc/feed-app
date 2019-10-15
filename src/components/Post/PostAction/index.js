@@ -6,11 +6,11 @@ import { VoteProvider } from '../../../context/voteContext';
 import useVote from '../../../CustomHooks/useVotes';
 
 const PostAction = props => {
-  const { HandleUpVote } = useVote();
+  const handleVote = useVote();
   const { id, upvote, downvote } = props;
   return (
     <div className='inline-flex items-center my-1'>
-      <VoteProvider value={HandleUpVote}>
+      <VoteProvider value={handleVote}>
         <UpVote id={id} upvote={upvote} />
         <DownVote id={id} downvote={downvote} />
         <Share />
