@@ -1,10 +1,10 @@
 import React from 'react';
+import Posts from '../Posts'
+import Header from '../../components/header'
 
 
 const App = () => {
-    return (
-        <div>Index App</div>
-    )
+    return
 }
 
 

@@ -2,7 +2,6 @@
 import { db } from '../../utils/Firebase';
 
 const useVote = () => {
-
   const resMsg = {
     success: 'Document successfully updated!',
     error: 'Error writing document: ',

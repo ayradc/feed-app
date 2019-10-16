@@ -7,15 +7,14 @@ import postContext from '../../context/postContext';
 const Post = () => {
   const posts = useContext(postContext);
   // console.log(typeof posts);
-
   return (
-    <div className='flex flex-row flex-wrap -mx-2'>
+    <div className='flex flex-row flex-wrap'>
       {posts.map(post => (
         <div key={post.id} className='w-full'>
           <div className='py-2'>
-            <div className='flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer'>
+            <div className='flex border border-grey-light-alt hover:border-gray-400 rounded bg-white cursor-pointer hover:bg-gray-100'>
               <div className='h-32 lg:h-32 lg:w-32 md:h-32 md:w-32 w-32 overflow-hidden flex flex-col text-center'>
-                <img className='w-full' src={post.imgLink} alt=''></img>
+                <img className='object-cover h-48 w-ful' src={post.imgLink} alt=''></img>
               </div>
               <div className='w-11/12 pt-2 ml-4'>
                 <Date date={post.formatedCreatedAt} />

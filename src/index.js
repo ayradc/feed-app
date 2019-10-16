@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
 import Routes from './Routes';
 import './styles/tailwind.css'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Header from './components/header'
 
 
 ReactDOM.render(
-    <Routes history={browserHistory}/>,
+    <Router>
+        <Header />
+        <Routes />
+    </Router>,
     document.getElementById('root')
 );
