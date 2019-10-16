@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorSvg, SuccessSvg } from '../../utils/svg';
 
-const Error = () => {
+const Error = (props) => {
   return (
     <div className='flex bg-red-300 p-4'>
       <div className='mr-4'>
@@ -11,15 +11,15 @@ const Error = () => {
       </div>
       <div className='flex justify-between w-full'>
         <div className='text-red-800'>
-          <p className='mb-1 font-bold'>Error</p>
-          <p className='text-xs'>Error</p>
+          <p className='mb-1 font-bold'>{props.title}</p>
+          <p className='text-xs'> {props.msg} </p>
         </div>
       </div>
     </div>
   );
 };
 
-const Success = () => {
+const Success = (props) => {
   return (
     <div className='flex bg-green-300 p-4'>
       <div className='mr-4'>
@@ -29,8 +29,8 @@ const Success = () => {
       </div>
       <div className='flex justify-between w-full'>
         <div className='text-green-800'>
-          <p className='mb-1 font-bold'>Success</p>
-          <p className='text-xs'>Success</p>
+          <p className='mb-1 font-bold'>{props.title}</p>
+          <p className='text-xs'>{props.msg} </p>
         </div>
       </div>
     </div>
