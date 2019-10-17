@@ -8,6 +8,8 @@ function Footer() {
           <li>
             <a
               href='https://github.com/ayradc/feed-app'
+              target='_blank'
+              rel='noopener noreferrer'
               class='inline-block py-2 px-3 text-blue-200 hover:text-blue-100 no-underline'
             >
               Git repository link
