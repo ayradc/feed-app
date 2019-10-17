@@ -9,7 +9,7 @@ const DownVote = props => {
   return (
     <button
       onClick={e => handleVote.HandleDownVote(e, id, downvote)}
-      className='flex hover:bg-gray-200 py-1 px-2 m-1'
+      className='flex hover:bg-indigo-100 py-1 px-2 m-1 border rounded hover:border-indigo-400 border-indigo-200 outline-none'
     >
       <DownVoteSvg />
       <span className='ml-2 text-xs font-semibold text-grey'>

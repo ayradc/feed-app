@@ -4,7 +4,6 @@ import { PostProvider } from '../../context/postContext';
 import usePosts from '../../CustomHooks/usePosts';
 import Spinner from '../../utils/svg/Spinner.js';
 
-
 const Posts = () => {
   const { posts, loading } = usePosts();
 

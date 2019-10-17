@@ -29,27 +29,27 @@ const Form = () => {
       ) : null}
       <form className='py-4 px-8 mt-4' onSubmit={handleSubmite}>
         <input
-          className='appearance-none border rounded w-full py-2 px-3 text-gray-600 mb-4'
+          className='appearance-none border rounded w-full py-2 px-3 border-indigo-200 text-indigo-600 mb-4 placeholder-indigo-200 outline-none'
           onChange={e => setTitle(e.target.value)}
           type='text'
           name='title'
-          placeholder='Post Title'
+          placeholder='Give your post a title....'
         />
         <input
-          className='appearance-none border rounded w-full py-2 px-3 text-gray-600 mb-4'
+          className='appearance-none border rounded w-full py-2 px-3 border-indigo-200 text-indigo-600 mb-4 placeholder-indigo-200 outline-none'
           onChange={e => setLinkTo(e.target.value)}
           type='url'
           name='post-url'
-          placeholder='Post Link'
+          placeholder='Paste your external link...'
         />
         <input
-          className='appearance-none border rounded w-full py-2 px-3 text-gray-600 mb-4'
+          className='appearance-none border rounded w-full py-2 px-3 border-indigo-200 text-indigo-600 mb-4 placeholder-indigo-200 outline-none'
           onChange={e => setImgLink(e.target.value)}
           type='url'
           name='post-image'
-          placeholder='Image Url'
+          placeholder='Paste image URL'
         />
-        <button className='w-full bg-blue-700 hover:bg-blue-900 text-white font-medium py-2 px-8 rounded-full'>
+        <button className='w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-8 rounded-sm'>
           <RightArrowSvg />
           <span className='ml-1 text-sm font-medium'>Post</span>
         </button>
