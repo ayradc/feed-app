@@ -7,33 +7,38 @@ const usePosts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snap => {
-      const newPosts = snap.docs.map(doc => {
-        let id = doc.id;
-        let {
-          title,
-          linkTo,
-          imgLink,
-          upvote,
-          downvote,
-          createdAt
-        } = doc.data();
-        let formatedCreatedAt = timeAgo(createdAt.toDate());
-        //console.log(formatedCreatedAt);
-        return {
-          id,
-          title,
-          linkTo,
-          imgLink,
-          upvote,
-          downvote,
-          formatedCreatedAt
-        };
-      });
+    const unsubscribe = db
+      .collection('posts')
+      .orderBy('upvote', 'desc')
+      .limit(20)
+      .onSnapshot(snap => {
+        const newPosts = snap.docs.map(doc => {
+          let id = doc.id;
+          let {
+            title,
+            linkTo,
+            imgLink,
+            upvote,
+            downvote,
+            createdAt
+          } = doc.data();
+          let formatedCreatedAt = timeAgo(createdAt.toDate());
+          //console.log(formatedCreatedAt);
+          return {
+            id,
+            title,
+            linkTo,
+            imgLink,
+            upvote,
+            downvote,
+            formatedCreatedAt
+          };
+        });
 
-      setPosts(newPosts);
-      setLoading(false);
-    });
+        setPosts(newPosts);
+        setLoading(false);
+      });
+    return () => unsubscribe();
   }, []);
   return { posts, loading };
 };
