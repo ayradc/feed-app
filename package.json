@@ -18,7 +18,7 @@
     "tailwindcss": "^1.1.2"
   },
   "scripts": {
-    "prebuild": "NODE_ENV=development npm run build:styles",
+    "prebuild": "set NODE_ENV=development npm run build:styles",
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
